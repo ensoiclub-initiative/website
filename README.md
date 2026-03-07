@@ -1,42 +1,47 @@
-# sv
+# EnsoiClub Initiative - Site vitrine
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Site vitrine institutionnel pour l'association EnsoiClub Initiative, conforme au CDC.
 
-## Creating a project
+## Développement
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --add prettier eslint --install npm .
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Build
 
-To create a production version of your app:
-
-```sh
+```bash
 npm run build
+npm run preview  # Prévisualiser le build
 ```
 
-You can preview the production build with `npm run preview`.
+## Configuration
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Formulaire de contact
+
+Le formulaire ouvre le client mail par défaut (mailto). Aucune configuration requise.
+
+### Formulaire candidature
+
+Définir `PUBLIC_SITE_URL` pour la redirection après envoi (ex: `https://username.github.io/website`)
+
+### Formulaire de candidature bénévole
+
+Utilise [FormSubmit.co](https://formsubmit.co) — aucune configuration requise. L'envoi se fait vers `contact@ensoiclubinitiative.fr` (voir `config.ts`). **Premier envoi** : FormSubmit enverra un email de confirmation à cette adresse ; il faut cliquer sur le lien pour activer le formulaire.
+
+### Base path (GitHub Pages)
+
+Si le site est déployé dans un sous-dossier (ex: `ensoiclub-initiative.github.io/website/`), définir `BASE_PATH=/website` lors du build.
+
+## Structure
+
+- `src/lib/components/` — Header, Footer, Logo, Section, ContactForm
+- `src/lib/styles/` — Variables CSS, styles globaux
+- `src/routes/` — Pages (Accueil, Association, Valorisation, Contact, pages légales)
+
+## Assets à fournir
+
+- Logo EnsoiClub (SVG) — remplacer le placeholder dans `Logo.svelte`
+- Photo Sandra Lenoir — page Association
+- Logos lauréats incubation — page Valorisation

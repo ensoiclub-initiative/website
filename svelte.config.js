@@ -12,7 +12,8 @@ const config = {
 			strict: true
 		}),
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/website' : ''
+			// Pour GitHub Pages (repo website) : base: '/website'
+			base: process.env.BASE_PATH || ''
 		}
 	}
 };
