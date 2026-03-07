@@ -13,6 +13,7 @@
 html {
 	font-size: 16px;
 	scroll-behavior: smooth;
+	overflow-x: hidden;
 }
 
 body {
@@ -24,6 +25,8 @@ body {
 	background-color: var(--color-bg-primary);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+	overflow-wrap: break-word;
 }
 
 h1,
@@ -93,11 +96,16 @@ img {
 
 .main {
 	min-height: calc(100vh - var(--header-height) - 200px);
+	width: 100%;
+	min-width: 0;
+	overflow-x: hidden;
 }
 
 .container {
+	width: 100%;
 	max-width: var(--container-max);
 	margin: 0 auto;
+	min-width: 0;
 }
 
 /* Shared form styles (DRY) */

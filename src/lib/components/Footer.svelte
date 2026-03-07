@@ -42,6 +42,7 @@
 		background-color: var(--color-bg-primary);
 		border-top: 1px solid var(--color-overlay-10);
 		padding: var(--space-2xl) var(--space-lg);
+		overflow-x: hidden;
 	}
 
 	.footer-content {

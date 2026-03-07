@@ -20,11 +20,14 @@
 <style>
 	.section {
 		padding: var(--space-3xl) var(--space-lg);
+		overflow-x: hidden;
 	}
 
 	.section-inner {
+		width: 100%;
 		max-width: var(--container-max);
 		margin: 0 auto;
+		min-width: 0;
 	}
 
 	.section.light {

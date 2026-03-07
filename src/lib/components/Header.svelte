@@ -47,6 +47,7 @@
 		z-index: 100;
 		background-color: var(--color-bg-primary);
 		border-bottom: 1px solid var(--color-overlay-10);
+		overflow-x: hidden;
 	}
 
 	.header-inner {
