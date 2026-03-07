@@ -29,7 +29,7 @@
 	</div>
 {:else}
 	<form
-		class="form-base contact-form"
+		class="form-base form-layout form-layout--narrow"
 		method="post"
 		action="#"
 		onsubmit={handleSubmit}
@@ -71,12 +71,3 @@
 		<button type="submit" class="submit-btn">Envoyer</button>
 	</form>
 {/if}
-
-<style>
-	.contact-form {
-		max-width: 32rem;
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-lg);
-	}
-</style>

@@ -34,7 +34,8 @@ export const FORM = {
 	placeholderEmail: 'votre@email.fr',
 	placeholderName: 'Votre nom',
 	placeholderMessage: 'Votre message...',
-	consentVolunteer: "J'accepte que mes données soient utilisées pour traiter ma candidature (RGPD).",
+	consentVolunteer:
+		"J'accepte que mes données soient utilisées pour traiter ma candidature (RGPD).",
 	consentContact: "J'accepte que mes données soient utilisées pour me recontacter (RGPD)."
 } as const;
 

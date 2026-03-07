@@ -13,9 +13,7 @@
 	let { title = '', description, fullTitle, ogImage }: Props = $props();
 
 	const baseUrl = $derived(getBaseUrlFromEnv() || $page.url.origin);
-	const canonicalUrl = $derived(
-		baseUrl ? `${baseUrl}${$page.url.pathname}` : ''
-	);
+	const canonicalUrl = $derived(baseUrl ? `${baseUrl}${$page.url.pathname}` : '');
 	const pageTitle = $derived(fullTitle ?? (title ? `${title} | ${SITE.name}` : SITE.name));
 </script>
 

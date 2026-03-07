@@ -2,10 +2,10 @@
 	import { page } from '$app/stores';
 	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
-	import { CONTACT, FORM, VOLUNTEER_DUREES, VOLUNTEER_POLES } from '$lib/config';
+	import { FORM, VOLUNTEER_DUREES, VOLUNTEER_POLES } from '$lib/config';
 	import { getFormSubmitUrl } from '$lib/formSubmit';
 	import { getSiteBaseUrlOptional } from '$lib/url';
-	import { validateFileSize } from '$lib/validation';
+	import { validateFileSize, validateVolunteerForm } from '$lib/validation';
 
 	const SUCCESS_URL = $derived(
 		`${getSiteBaseUrlOptional() || (browser ? $page.url.origin : '')}${resolve('/candidature')}?sent=1`
@@ -31,11 +31,10 @@
 		if (!form) return;
 
 		validationError = '';
-		const poles = form.querySelectorAll<HTMLInputElement>('input[name="pole"]:checked');
-		const durees = form.querySelectorAll<HTMLInputElement>('input[name="duree"]:checked');
-		if (poles.length === 0 || durees.length === 0) {
+		const formResult = validateVolunteerForm(form);
+		if (!formResult.valid) {
 			e.preventDefault();
-			validationError = 'Veuillez sélectionner au moins une option pour chaque question.';
+			validationError = formResult.error;
 			return;
 		}
 
@@ -46,7 +45,6 @@
 			fileError = fileResult.error;
 			return;
 		}
-		// Si validation OK, on laisse le formulaire se soumettre normalement vers FormSubmit.co
 	}
 </script>
 
@@ -56,7 +54,7 @@
 	</div>
 {:else}
 	<form
-		class="form-base volunteer-form"
+		class="form-base form-layout form-layout--wide"
 		method="POST"
 		action={getFormSubmitUrl()}
 		enctype="multipart/form-data"
@@ -86,7 +84,13 @@
 
 		<div class="form-group">
 			<label for="formation">Formation / études actuelles <span class="required">*</span></label>
-			<input type="text" id="formation" name="formation" required placeholder={FORM.placeholderResponse} />
+			<input
+				type="text"
+				id="formation"
+				name="formation"
+				required
+				placeholder={FORM.placeholderResponse}
+			/>
 		</div>
 
 		<div class="form-group">
@@ -158,12 +162,3 @@
 		<button type="submit" class="submit-btn">Envoyer</button>
 	</form>
 {/if}
-
-<style>
-	.volunteer-form {
-		max-width: 36rem;
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-lg);
-	}
-</style>

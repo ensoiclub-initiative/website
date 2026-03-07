@@ -5,8 +5,12 @@
 import { env } from '$env/dynamic/public';
 import { SITE } from '$lib/config';
 
+function getRawEnvUrl(): string {
+	return (env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '');
+}
+
 function getRawBaseUrl(): string {
-	return (env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '') || SITE.baseUrlFallback;
+	return getRawEnvUrl() || SITE.baseUrlFallback;
 }
 
 /**
@@ -35,8 +39,7 @@ export function getSiteBaseUrl(): string {
  * Use with client fallback for redirect URLs.
  */
 export function getSiteBaseUrlOptional(): string {
-	const url = (env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '');
-	return url;
+	return getRawEnvUrl();
 }
 
 /**
@@ -44,7 +47,7 @@ export function getSiteBaseUrlOptional(): string {
  * Use with client fallback (e.g. $page.url.origin) in components.
  */
 export function getBaseUrlFromEnv(): string {
-	const url = (env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '');
+	const url = getRawEnvUrl();
 	if (!url) return '';
 	try {
 		return new URL(url).origin;
