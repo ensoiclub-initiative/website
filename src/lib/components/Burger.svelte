@@ -46,10 +46,4 @@
 			display: flex;
 		}
 	}
-
-	@media (min-width: 769px) {
-		.burger {
-			display: none;
-		}
-	}
 </style>

@@ -12,7 +12,7 @@
 			</div>
 			<div class="links">
 				<div class="contact-links">
-					<a href="mailto:{CONTACT.email}" class="footer-link" rel="external">{CONTACT.email}</a>
+					<a href="mailto:{CONTACT.email}" class="footer-link">{CONTACT.email}</a>
 					<a
 						href={CONTACT.instagramUrl}
 						target="_blank"

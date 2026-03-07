@@ -15,6 +15,7 @@
 	--color-bg-primary: var(--color-bleu-prusse);
 	--color-bg-light: var(--color-ivoire);
 	--color-text-primary: var(--color-ivoire);
+	--color-text-secondary: var(--color-overlay-50);
 	--color-text-dark: var(--color-bleu-prusse);
 	--color-accent: var(--color-violet-lavande);
 	--color-accent-secondary: var(--color-bleu-poudre);
@@ -49,6 +50,10 @@
 	/* Layout */
 	--container-max: 72rem;
 	--header-height: 4rem;
+
+	/* Breakpoints (use in media queries) */
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 768px;
 
 	/* Transitions */
 	--transition-fast: 150ms ease;

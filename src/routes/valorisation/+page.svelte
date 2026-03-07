@@ -52,7 +52,7 @@
 		<li>un appui méthodologique,</li>
 		<li>et une montée en qualité des actions proposées.</li>
 	</ul>
-	<div class="partners-placeholder">
+	<div class="card card--muted partners-placeholder">
 		<p>Logos et noms des structures partenaires pourront être intégrés ici.</p>
 	</div>
 </Section>
@@ -60,14 +60,14 @@
 <Section>
 	<h2>Nos actions</h2>
 	<div class="actions-grid">
-		<div class="action-card">
+		<div class="card card--muted action-card">
 			<h3>Une approche complémentaire</h3>
 			<p>
 				Les actions de {SITE.name} ne se substituent pas aux dispositifs existants. Elles s'inscrivent
 				comme un maillon intermédiaire, entre le bien-être du quotidien et les prises en charge spécialisées.
 			</p>
 		</div>
-		<div class="action-card">
+		<div class="card card--muted action-card">
 			<h3>Ateliers de prévention & hygiène mentale</h3>
 			<p>
 				Des ateliers collectifs, accessibles et encadrés pour sensibiliser à la santé mentale,
@@ -75,7 +75,7 @@
 				quotidien.
 			</p>
 		</div>
-		<div class="action-card">
+		<div class="card card--muted action-card">
 			<h3>Projet pilote - Expérimentation territoriale</h3>
 			<p>
 				{SITE.name} développe actuellement un projet pilote, pionnier sur le territoire, dédié à l'expérimentation
@@ -110,9 +110,6 @@
 
 	.partners-placeholder {
 		margin-top: var(--space-2xl);
-		padding: var(--space-xl);
-		background: var(--color-overlay-05);
-		border-radius: 8px;
 		text-align: center;
 	}
 
@@ -125,9 +122,6 @@
 
 	.action-card {
 		padding: var(--space-lg);
-		background: var(--color-overlay-05);
-		border-radius: 8px;
-		border: 1px solid var(--color-overlay-10);
 	}
 
 	.action-card h3 {

@@ -1,17 +1,8 @@
-import { env } from '$env/dynamic/public';
 import { resolve } from '$app/paths';
 import { SITEMAP_ROUTES } from '$lib/config';
+import { getBaseUrl } from '$lib/url';
 
 export const prerender = true;
-
-function getBaseUrl(): string {
-	const url = (env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '') || 'https://ensoiclub-initiative.github.io/website';
-	try {
-		return new URL(url).origin;
-	} catch {
-		return url;
-	}
-}
 
 export function GET(): Response {
 	const baseUrl = getBaseUrl();

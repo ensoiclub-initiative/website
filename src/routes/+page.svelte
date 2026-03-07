@@ -53,19 +53,19 @@
 		{SITE.name} agit en amont, en complémentarité avec les dispositifs existants :
 	</p>
 	<div class="pillars-grid">
-		<div class="pillar-card">
+		<div class="card pillar-card">
 			<h3>Maintenance à long terme</h3>
 			<p class="pillar-desc">
 				La santé mentale se préserve au quotidien, pas seulement en situation d'urgence.
 			</p>
 		</div>
-		<div class="pillar-card">
+		<div class="card pillar-card">
 			<h3>Déstigmatisation</h3>
 			<p class="pillar-desc">
 				Rendre la santé mentale compréhensible et abordable pour les étudiants et jeunes actifs.
 			</p>
 		</div>
-		<div class="pillar-card">
+		<div class="card pillar-card">
 			<h3>Accessibilité</h3>
 			<p class="pillar-desc">
 				Des ateliers collectifs, structurés et réguliers, intégrés au quotidien.
@@ -144,13 +144,6 @@
 		grid-template-columns: repeat(3, 1fr);
 		gap: var(--space-xl);
 		margin-bottom: var(--space-2xl);
-	}
-
-	.pillar-card {
-		padding: var(--space-xl);
-		background: var(--color-overlay-06);
-		border-radius: 8px;
-		border: 1px solid var(--color-overlay-12);
 	}
 
 	.pillar-card h3 {

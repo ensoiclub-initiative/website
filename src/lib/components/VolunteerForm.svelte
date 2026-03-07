@@ -2,30 +2,14 @@
 	import { page } from '$app/stores';
 	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
-	import { env } from '$env/dynamic/public';
-	import { CONTACT } from '$lib/config';
-	import FormError from '$lib/components/FormError.svelte';
+	import { CONTACT, FORM, VOLUNTEER_DUREES, VOLUNTEER_POLES } from '$lib/config';
+	import { getFormSubmitUrl } from '$lib/formSubmit';
+	import { getSiteBaseUrlOptional } from '$lib/url';
 	import { validateFileSize } from '$lib/validation';
 
-	const FORMSUBMIT_URL = `https://formsubmit.co/${CONTACT.email}`;
 	const SUCCESS_URL = $derived(
-		`${(env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '') || (browser ? $page.url.origin : '')}${resolve('/candidature')}?sent=1`
+		`${getSiteBaseUrlOptional() || (browser ? $page.url.origin : '')}${resolve('/candidature')}?sent=1`
 	);
-
-	const POLES = [
-		'Santé / Contenu',
-		'Communication / Marketing',
-		'Droit / Structuration',
-		'Évaluation / Impact'
-	] as const;
-
-	const DUREES = [
-		'Quelques semaines',
-		'2-3 mois',
-		'4-6 mois',
-		'+ 6 mois',
-		'A définir ensemble'
-	] as const;
 
 	let submitted = $state(false);
 
@@ -34,7 +18,6 @@
 			submitted = true;
 		}
 	});
-	let error = $state(false);
 	let fileError = $state('');
 	let validationError = $state('');
 
@@ -75,45 +58,42 @@
 	<form
 		class="form-base volunteer-form"
 		method="POST"
-		action={FORMSUBMIT_URL}
+		action={getFormSubmitUrl()}
 		enctype="multipart/form-data"
 		onsubmit={handleSubmit}
 	>
 		<input type="hidden" name="_subject" value="Nouvelle candidature bénévole" />
 		<input type="hidden" name="_next" value={SUCCESS_URL} />
 		<input type="hidden" name="_captcha" value="false" />
-		{#if error}
-			<FormError variant="generic" email={CONTACT.email} />
-		{/if}
 		{#if validationError}
 			<p class="error-message">{validationError}</p>
 		{/if}
 
 		<div class="form-group">
 			<label for="nom">Prénom / Nom <span class="required">*</span></label>
-			<input type="text" id="nom" name="nom" required placeholder="Votre réponse" />
+			<input type="text" id="nom" name="nom" required placeholder={FORM.placeholderResponse} />
 		</div>
 
 		<div class="form-group">
 			<label for="email">Email <span class="required">*</span></label>
-			<input type="email" id="email" name="_replyto" required placeholder="votre@email.fr" />
+			<input type="email" id="email" name="_replyto" required placeholder={FORM.placeholderEmail} />
 		</div>
 
 		<div class="form-group">
 			<label for="age">Age <span class="required">*</span></label>
-			<input type="text" id="age" name="age" required placeholder="Votre réponse" />
+			<input type="text" id="age" name="age" required placeholder={FORM.placeholderResponse} />
 		</div>
 
 		<div class="form-group">
 			<label for="formation">Formation / études actuelles <span class="required">*</span></label>
-			<input type="text" id="formation" name="formation" required placeholder="Votre réponse" />
+			<input type="text" id="formation" name="formation" required placeholder={FORM.placeholderResponse} />
 		</div>
 
 		<div class="form-group">
 			<fieldset>
 				<legend>Pôle qui t'intéresse <span class="required">*</span></legend>
 				<div class="checkbox-group">
-					{#each POLES as pole (pole)}
+					{#each VOLUNTEER_POLES as pole (pole)}
 						<label class="checkbox-label">
 							<input type="checkbox" name="pole" value={pole} />
 							{pole}
@@ -132,7 +112,7 @@
 				id="disponibilites"
 				name="disponibilites"
 				required
-				placeholder="Votre réponse"
+				placeholder={FORM.placeholderResponse}
 			/>
 		</div>
 
@@ -142,7 +122,7 @@
 					>Durée d'engagement souhaitée (à titre informatif) <span class="required">*</span></legend
 				>
 				<div class="checkbox-group">
-					{#each DUREES as duree (duree)}
+					{#each VOLUNTEER_DUREES as duree (duree)}
 						<label class="checkbox-label">
 							<input type="checkbox" name="duree" value={duree} />
 							{duree}
@@ -171,7 +151,7 @@
 		<div class="form-group consent">
 			<label class="checkbox-label">
 				<input type="checkbox" name="consent" required />
-				J'accepte que mes données soient utilisées pour traiter ma candidature (RGPD).
+				{FORM.consentVolunteer}
 			</label>
 		</div>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CONTACT } from '$lib/config';
+	import { CONTACT, FORM } from '$lib/config';
 	import { buildMailtoContact } from '$lib/formSubmit';
 
 	let submitted = $state(false);
@@ -36,12 +36,12 @@
 	>
 		<div class="form-group">
 			<label for="name">Nom</label>
-			<input type="text" id="name" name="name" required placeholder="Votre nom" />
+			<input type="text" id="name" name="name" required placeholder={FORM.placeholderName} />
 		</div>
 
 		<div class="form-group">
 			<label for="email">Email</label>
-			<input type="email" id="email" name="email" required placeholder="votre@email.fr" />
+			<input type="email" id="email" name="email" required placeholder={FORM.placeholderEmail} />
 		</div>
 
 		<div class="form-group">
@@ -57,14 +57,14 @@
 
 		<div class="form-group">
 			<label for="message">Message</label>
-			<textarea id="message" name="message" rows="5" required placeholder="Votre message..."
+			<textarea id="message" name="message" rows="5" required placeholder={FORM.placeholderMessage}
 			></textarea>
 		</div>
 
 		<div class="form-group consent">
 			<label class="checkbox-label">
 				<input type="checkbox" name="consent" required />
-				J'accepte que mes données soient utilisées pour me recontacter (RGPD).
+				{FORM.consentContact}
 			</label>
 		</div>
 

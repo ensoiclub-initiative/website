@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CONTACT, SITE } from '$lib/config';
+	import { CONTACT, LEGAL, SITE } from '$lib/config';
 	import PageMeta from '$lib/components/PageMeta.svelte';
 	import Section from '$lib/components/Section.svelte';
 </script>
@@ -65,7 +65,7 @@
 	<p>
 		Si vous estimez que le traitement de vos données personnelles constitue une violation du
 		règlement, vous avez le droit d'introduire une réclamation auprès de la CNIL :<br />
-		<a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>
+		<a href={LEGAL.cnilUrl} target="_blank" rel="noopener noreferrer">www.cnil.fr</a>
 	</p>
 
 	<h2>Sécurité</h2>

@@ -6,7 +6,36 @@ export const SITE = {
 	name: 'EnsoiClub Initiative',
 	nameStyled: 'EnsoiClub',
 	nameSuffix: 'Initiative',
-	slogan: "Normalisons l'entretien de ta santé mentale"
+	slogan: "Normalisons l'entretien de ta santé mentale",
+	baseUrlFallback: 'https://ensoiclub-initiative.github.io/website'
+} as const;
+
+export const LEGAL = {
+	cnilUrl: 'https://www.cnil.fr'
+} as const;
+
+export const VOLUNTEER_POLES = [
+	'Santé / Contenu',
+	'Communication / Marketing',
+	'Droit / Structuration',
+	'Évaluation / Impact'
+] as const;
+
+export const VOLUNTEER_DUREES = [
+	'Quelques semaines',
+	'2-3 mois',
+	'4-6 mois',
+	'+ 6 mois',
+	'A définir ensemble'
+] as const;
+
+export const FORM = {
+	placeholderResponse: 'Votre réponse',
+	placeholderEmail: 'votre@email.fr',
+	placeholderName: 'Votre nom',
+	placeholderMessage: 'Votre message...',
+	consentVolunteer: "J'accepte que mes données soient utilisées pour traiter ma candidature (RGPD).",
+	consentContact: "J'accepte que mes données soient utilisées pour me recontacter (RGPD)."
 } as const;
 
 export const CONTACT = {

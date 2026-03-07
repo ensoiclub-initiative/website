@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { env } from '$env/dynamic/public';
 	import { SITE } from '$lib/config';
+	import { getBaseUrlFromEnv } from '$lib/url';
 
 	interface Props {
 		title?: string;
@@ -12,9 +12,7 @@
 
 	let { title = '', description, fullTitle, ogImage }: Props = $props();
 
-	const baseUrl = $derived(
-		(env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '') || $page.url.origin
-	);
+	const baseUrl = $derived(getBaseUrlFromEnv() || $page.url.origin);
 	const canonicalUrl = $derived(
 		baseUrl ? `${baseUrl}${$page.url.pathname}` : ''
 	);
