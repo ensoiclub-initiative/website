@@ -40,9 +40,9 @@ export const FORM = {
 } as const;
 
 export const CONTACT = {
-	email: 'contact@ensoiclubinitiative.fr',
+	email: 'direction@ensoiclub.fr',
 	emailCandidature: 'direction@ensoiclub.fr',
-	instagramUrl: 'https://instagram.com/ensoiclubinitiative',
+	instagramUrl: 'https://www.instagram.com/ensoiclub',
 	linkedinUrl: 'https://www.linkedin.com/company/ensoiclub/'
 } as const;
 
