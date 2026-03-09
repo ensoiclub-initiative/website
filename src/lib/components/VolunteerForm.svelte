@@ -3,7 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
 	import { FORM, VOLUNTEER_DUREES, VOLUNTEER_POLES } from '$lib/config';
-	import { getFormSubmitUrl } from '$lib/formSubmit';
+	import { getFormSubmitCandidatureUrl } from '$lib/formSubmit';
 	import { getSiteBaseUrlOptional } from '$lib/url';
 	import { validateFileSize, validateVolunteerForm } from '$lib/validation';
 
@@ -56,7 +56,7 @@
 	<form
 		class="form-base form-layout form-layout--wide"
 		method="POST"
-		action={getFormSubmitUrl()}
+		action={getFormSubmitCandidatureUrl()}
 		enctype="multipart/form-data"
 		onsubmit={handleSubmit}
 	>

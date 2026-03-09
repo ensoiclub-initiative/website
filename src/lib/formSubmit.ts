@@ -8,6 +8,6 @@ export function buildMailtoContact(email: string, subject: string, body: string)
 	return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
-export function getFormSubmitUrl(): string {
-	return `https://formsubmit.co/${CONTACT.email}`;
+export function getFormSubmitCandidatureUrl(): string {
+	return `https://formsubmit.co/${CONTACT.emailCandidature}`;
 }
