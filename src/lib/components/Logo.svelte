@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { base, resolve } from '$app/paths';
 	import { SITE } from '$lib/config';
 
 	interface Props {
@@ -9,16 +9,18 @@
 	}
 
 	let { class: className = '', size = 48, variant = 'dark' }: Props = $props();
+
+	const logoUrl = `${base}/logo.png`;
 </script>
 
-<!-- Placeholder logo (CDC: logo cf fichier) -->
 <a href={resolve('/')} class="logo {variant} {className}" aria-label="{SITE.name} - Accueil">
-	<span
-		class="logo-placeholder"
-		style="width: {size}px; height: {size}px; font-size: {size * 0.25}px;"
-	>
-		logo
-	</span>
+	<img
+		src={logoUrl}
+		alt=""
+		width={size}
+		height={size}
+		class="logo-img"
+	/>
 </a>
 
 <style>
@@ -27,22 +29,9 @@
 		align-items: center;
 		transition: opacity var(--transition-fast);
 	}
-	.logo-placeholder {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--color-overlay-15);
-		border-radius: 4px;
-		font-family: var(--font-heading);
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-	.logo.dark {
-		color: var(--color-ivoire);
-	}
-	.logo.light {
-		color: var(--color-bleu-prusse);
+	.logo-img {
+		display: block;
+		object-fit: contain;
 	}
 	.logo:hover {
 		opacity: 0.9;
